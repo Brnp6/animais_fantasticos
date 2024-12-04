@@ -1,9 +1,9 @@
-// modulos - diferentes arquivos com funções especificas
+ // modulos - diferentes arquivos com funções especificas
 // facilita compartilhamento, pois basta importar um modulo
 //  quando for exportar coloca default pq vai valer ualquer nome e nao serei obrigado a a ter que colocar o mesmo nome da função desejada ou colocar entre chaves para colocar mais de uma funão em chaves
 //  posso importar qualquer dado javascript desde function, var const e etc
 // se o arquivo for importado para masi de uma páginaz, ele sempre será  carregado somente uma vez.
-import initScrollSuave from "./scroll-suave.js";
+import ScrollSuave from "./scroll-suave.js";
 import animationScroll from "./animascroll.js";
 import initAccordion from "./accordio.js";
 import  initTabNav from "./inittab.js";
@@ -15,9 +15,13 @@ import  initFuncionamento from "./funcionamento.js" ;
 import  initFetchAnimais from "./fetch-animais.js";
 import initFetchBitcoin from "./fetch-bitcoin.js";
 
+const scrollSuave = new ScrollSuave('[data-menu="suave"] a[href^="#"]');
+scrollSuave.init();
+
+
 
 initTabNav();
-initScrollSuave();
+
 animationScroll();
 initAccordion();
 initModal();
