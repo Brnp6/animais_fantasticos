@@ -5,7 +5,7 @@
 // se o arquivo for importado para masi de uma páginaz, ele sempre será  carregado somente uma vez.
 import ScrollSuave from "./scroll-suave.js";
 import animationScroll from "./animascroll.js";
-import initAccordion from "./accordio.js";
+import Accordion from "./accordio.js";
 import  initTabNav from "./inittab.js";
 import initModal from "./modal.js";
 import initTooltip from "./tooltip.js";
@@ -18,12 +18,14 @@ import initFetchBitcoin from "./fetch-bitcoin.js";
 const scrollSuave = new ScrollSuave('[data-menu="suave"] a[href^="#"]');
 scrollSuave.init();
 
+const accordion = new Accordion('[data-anime="accordion"] dt');
+accordion.init();
+
 
 
 initTabNav();
 
 animationScroll();
-initAccordion();
 initModal();
 initTooltip(); 
 dropdownMenu();
