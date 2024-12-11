@@ -25,11 +25,8 @@ export default class TabNav {
     this.activeTab(0);
     this.addTabNavEvent();
   };
+  return this;
  }
-  
-
-  // criar função que ao clicar nas imagens adicione a classe ativo nas seções do tab content
-
   
 };
 
