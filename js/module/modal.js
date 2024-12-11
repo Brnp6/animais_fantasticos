@@ -1,36 +1,45 @@
-export default function initModal() {
+export default class Modal {
+
   //  1°: selecionando os botões no html queryselector = primeiro elemeno unicamente
-  const botaoAbrir = document.querySelector('[data-modal="abrir"]');
-  const botaoFechar = document.querySelector('[data-modal="fechar"]');
-  const containerModal = document.querySelector('[data-modal="container"]');
+  constructor(botaoAbrir,botaoFechar,containerModal){
+    this.botaoAbrir = document.querySelector(botaoAbrir);
+    this.botaoFechar = document.querySelector(botaoFechar);
+    this.containerModal = document.querySelector(containerModal);
+    // bind this ao callback par fazer referencia ao objeto da classe
+    this.eventToggleModal = this.eventToggleModal.bind(this);
+    this.cliqueForaModal = this.cliqueForaModal.bind(this);
+  }
   
+  // abre e fecha o modal 
+  toggleModal(){
+    this.containerModal.classList.toggle('ativo');
+  }
+
+  // adiciona o evento de toggle ao modal 
+  eventToggleModal(event){
+    event.preventDefault();
+    this.toggleModal();
+  }
   
-  //  verificar se os botoes existem no código
-  if (botaoAbrir && botaoFechar && containerModal) {
-    //  3° funções do abrir e fechaar o modal
-    function abrirModal(event) {
-      event.preventDefault();
-      containerModal.classList.add('ativo');
+  // fecha o modal ao clickar do lado de fora
+  cliqueForaModal(event){
+    if (event.target === this.containerModal) {
+      this.toggleModal();
     }
-  
-    function fecharModal(event) {
-      event.preventDefault();
-      containerModal.classList.remove('ativo');
+  }
+
+  // adiciona eventos aos elementos do modal
+  addModalEvents(){
+    this.botaoAbrir.addEventListener('click', this.eventToggleModal);
+    this.botaoFechar.addEventListener('click', this.eventToggleModal  );
+    this.containerModal.addEventListener('click',this.cliqueForaModal);
+  }
+
+  init(){
+    if (this.botaoAbrir && this.botaoFechar && this.containerModal) {
+      this.addModalEvents();
     }
-  
-  
-    function clickFora(event) {
-      if (event.target === containerModal) {
-        fecharModal(event);
-      }
-    }
-  
-  
-    // 2°adicionar evento aos botoes
-    botaoAbrir.addEventListener('click', abrirModal);
-    botaoFechar.addEventListener('click', fecharModal);
-    containerModal.addEventListener('click', clickFora);
-  
+    return this;
   }
 
 };
