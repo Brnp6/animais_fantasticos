@@ -12,8 +12,8 @@ import Tooltip from "./tooltip.js";
 import dropdownMenu from "./dropdown-menu.js";
 import initMenuMobile from "./menu-mobile.js";
 import  initFuncionamento from "./funcionamento.js" ;
-import  initFetchAnimais from "./fetch-animais.js";
 import initFetchBitcoin from "./fetch-bitcoin.js";
+import fetchAnimais from "./fetch-animais.js";
 
 const scrollSuave = new ScrollSuave('[data-menu="suave"] a[href^="#"]');
 scrollSuave.init();
@@ -30,12 +30,13 @@ modal.init();
 const tooltip = new Tooltip("[data-tooltip]");
 tooltip.init();
 
+fetchAnimais('../../animaisapi.json', 'numeros-grid');
 
 animationScroll();
 dropdownMenu();
 initMenuMobile();
 initFuncionamento();
-initFetchAnimais();
+
 initFetchBitcoin();
 // 'use strit'
 // modo restrito ue previne algumas ações consideradas erro 
