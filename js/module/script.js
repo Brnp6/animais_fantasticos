@@ -12,7 +12,7 @@ import Tooltip from "./tooltip.js";
 import dropdownMenu from "./dropdown-menu.js";
 import initMenuMobile from "./menu-mobile.js";
 import  initFuncionamento from "./funcionamento.js" ;
-import initFetchBitcoin from "./fetch-bitcoin.js";
+import fetchBitcoin from "./fetch-bitcoin.js";
 import fetchAnimais from "./fetch-animais.js";
 
 const scrollSuave = new ScrollSuave('[data-menu="suave"] a[href^="#"]');
@@ -28,7 +28,7 @@ const modal = new Modal('[data-modal="abrir"]','[data-modal="fechar"]','[data-mo
 modal.init();
 
 const tooltip = new Tooltip("[data-tooltip]");
-tooltip.init();
+tooltip.init(); 
 
 fetchAnimais('../../animaisapi.json', 'numeros-grid');
 
@@ -37,7 +37,7 @@ dropdownMenu();
 initMenuMobile();
 initFuncionamento();
 
-initFetchBitcoin();
+fetchBitcoin('https://blockchain.info/ticker','.btc-preco');
 // 'use strit'
 // modo restrito ue previne algumas ações consideradas erro 
 
